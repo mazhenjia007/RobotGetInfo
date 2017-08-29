@@ -1,0 +1,5 @@
+#include <iostream>
+
+#include "Kinova.API.CommLayerUbuntu.h"
+#include "KinovaTypes.h"
+#include "KinvoaMethod.h"
