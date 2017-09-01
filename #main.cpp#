@@ -39,7 +39,10 @@ int main(){
 
     MySetActiveDevice(list[0]);
 
-    MyGetCartesianPosition(pNow);
+    // MyGetCartesianPosition(pNow);
+
+    
+    
     float X = pNow.Coordinates.X;
     float Y = pNow.Coordinates.Y;
     float Z = pNow.Coordinates.Z;

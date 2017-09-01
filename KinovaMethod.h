@@ -20,6 +20,9 @@ int (*MySetActiveDevice)(KinovaDevice);
 int (*MySendBasicTrajectory)(TrajectoryPoint);
 int (*MyGetCartesianCommand)(CartesianPosition &);
 int (*MyGetCartesianPosition)(CartesianPosition &);
+int (*MyGetAngularPosition)(AngularPosition &);
+int (*MygetAngularCommand)(AngularPosition &);
+int (*MyGetAngularVelocity)(AngularPosition &);
 
 int LoadAPI(){
   cout << "Loading API" << endl;
@@ -36,12 +39,16 @@ int LoadAPI(){
   MySendBasicTrajectory = (int (*)(TrajectoryPoint)) dlsym(commandLayer_handle, "SendBasicTrajectory");
   MyGetCartesianCommand = (int (*)(CartesianPosition &)) dlsym(commandLayer_handle, "GetCartesianCommand");
   MyGetCartesianPosition = (int (*)(CartesianPosition &)) dlsym(commandLayer_handle, "GetCartesianPosition");
-
+  MyGetAngularPosition = (int (*)(AngularPosition &)) dlsym(commandLayer_handle, "GetAngularPosition");
+  MyGetAngularCommand = (int (*)(AngularPosition &)) dlsym(commandLayer_handle, "GetAngularCommand");
+  MyGetAngularVelocity = (int (*)(AngularVelocity &)) dlsym(commandLayer_handle, "GetAngularVelocity");
+  
   if (MyInitAPI==NULL || MyCloseAPI==NULL || MyMoveHome==NULL
       || MyInitFingers==NULL
       || MyGetDevices==NULL || MySetActiveDevice==NULL
       || MySendBasicTrajectory==NULL
-      || MyGetCartesianCommand==NULL || MyGetCartesianPosition==NULL){
+      || MyGetCartesianCommand==NULL || MyGetCartesianPosition==NULL
+      || MyGetAngularPosition==NULL || MyGetAngularCommand==NULL){
     cout << " *** ERROR During Loading *** " << endl;
     return 0;
   }
