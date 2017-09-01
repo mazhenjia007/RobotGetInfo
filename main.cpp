@@ -9,18 +9,6 @@
 
 using namespace std;
 
-int Display(CartesianPosition pNow){
-  float X = pNow.Coordinates.X;
-  float Y = pNow.Coordinates.Y;
-  float Z = pNow.Coordinates.Z;
-  float ThetaX = pNow.Coordinates.ThetaX;
-  float ThetaY = pNow.Coordinates.ThetaY;
-  float ThetaZ = pNow.Coordinates.ThetaZ;
-  
-  printf("X=%7.4f, Y=%7.4f, Z=%7.4f, ThetaX=%7.2f, ThetaY=%7.2f, ThetaZ=%7.2f",
-	 X, Y, Z, ThetaX/PI*180, ThetaY/PI*180, ThetaZ/PI*180);
-}
-
 int main(){
   int result;
   // CartesianPosition pNow;
@@ -39,16 +27,20 @@ int main(){
 
     MySetActiveDevice(list[0]);
 
-    MyGetCartesianPosition(pNow);
-    float X = pNow.Coordinates.X;
-    float Y = pNow.Coordinates.Y;
-    float Z = pNow.Coordinates.Z;
-    float ThetaX = pNow.Coordinates.ThetaX;
-    float ThetaY = pNow.Coordinates.ThetaY;
-    float ThetaZ = pNow.Coordinates.ThetaZ;
-  
-    printf("X=%7.4f, Y=%7.4f, Z=%7.4f, ThetaX=%7.2f, ThetaY=%7.2f, ThetaZ=%7.2f",
-	   X, Y, Z, ThetaX/PI*180, ThetaY/PI*180, ThetaZ/PI*180);
+    // MyGetCartesianPosition(pNow);
+
+    MyGetAngularPosition(pNow);
+
+    float a1 = pNow.Actuators.Actuator1;
+    float a2 = pNow.Actuators.Actuator2;
+    float a3 = pNow.Actuators.Actuator3;
+    float a4 = pNow.Actuators.Actuator4;
+    float a5 = pNow.Actuators.Actuator5;
+    float a6 = pNow.Actuators.Actuator6;
+
+    printf("A1=%7.2f, A2=%7.2f, A3=%7.2f, A4=%7.2f, A5=%7.2f, A6=%7.2f",
+	   a1, a2, a3,
+	   a4, a5, a6);
     cout << endl;
 
     printf("Finger1=%7.4f, Finger2=%7.4f, Finger3=%7.4f",

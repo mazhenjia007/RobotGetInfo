@@ -21,7 +21,7 @@ int (*MySendBasicTrajectory)(TrajectoryPoint);
 int (*MyGetCartesianCommand)(CartesianPosition &);
 int (*MyGetCartesianPosition)(CartesianPosition &);
 int (*MyGetAngularPosition)(AngularPosition &);
-int (*MygetAngularCommand)(AngularPosition &);
+int (*MyGetAngularCommand)(AngularPosition &);
 int (*MyGetAngularVelocity)(AngularPosition &);
 
 int LoadAPI(){
@@ -41,7 +41,7 @@ int LoadAPI(){
   MyGetCartesianPosition = (int (*)(CartesianPosition &)) dlsym(commandLayer_handle, "GetCartesianPosition");
   MyGetAngularPosition = (int (*)(AngularPosition &)) dlsym(commandLayer_handle, "GetAngularPosition");
   MyGetAngularCommand = (int (*)(AngularPosition &)) dlsym(commandLayer_handle, "GetAngularCommand");
-  MyGetAngularVelocity = (int (*)(AngularVelocity &)) dlsym(commandLayer_handle, "GetAngularVelocity");
+  MyGetAngularVelocity = (int (*)(AngularPosition &)) dlsym(commandLayer_handle, "GetAngularVelocity");
   
   if (MyInitAPI==NULL || MyCloseAPI==NULL || MyMoveHome==NULL
       || MyInitFingers==NULL
